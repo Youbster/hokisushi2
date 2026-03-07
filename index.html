@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoki Sushi – Buffet à Volonté 7j/7 · Neuilly-Plaisance</title>
+    <meta name="description" content="Hoki Sushi à Neuilly-Plaisance. Buffet japonais à volonté servi à table. Fraîcheur garantie, Sushis, Makis et Brochettes.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23111'/><text y='.9em' x='50%' text-anchor='middle' font-size='52' fill='%23d4a853'>寿</text></svg>">
 
@@ -35,7 +36,8 @@
         .nav-links a:hover { color: var(--gold); }
 
         /* Lang Toggle */
-        .lang-switch { background: none; border: 1px solid var(--dim); color: var(--gold); padding: 4px 8px; cursor: pointer; font-size: 0.6rem; font-weight: 800; border-radius: 4px; }
+        .lang-switch { background: none; border: 1px solid var(--dim); color: var(--gold); padding: 4px 8px; cursor: pointer; font-size: 0.6rem; font-weight: 800; border-radius: 4px; transition: .3s; }
+        .lang-switch:hover { background: var(--gold); color: var(--dark); }
 
         .nav-cta { border: 1px solid var(--gold); color: var(--gold); padding: 8px 18px; font-size: .65rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: .3s; }
         .nav-cta:hover { background: var(--gold); color: var(--dark); }
@@ -59,16 +61,16 @@
 
         /* Hero */
         #hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,9,8,0.4), rgba(10,9,8,1)), url('https://images.unsplash.com/photo-1583623025817-d180a2221d0a?auto=format&fit=crop&q=80&w=2000') center/cover; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,9,8,0.5), rgba(10,9,8,1)), url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=2070') center/cover; }
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
         h1 { font-family: 'Cormorant Garamond'; font-size: clamp(3.5rem, 10vw, 7.5rem); line-height: 0.9; margin-bottom: 1rem; }
         h1 em { font-style: normal; color: var(--gold); }
 
-        /* Gallery Grid */
+        /* Gallery Grid - FIXED IMAGES */
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 4rem; }
-        .gallery-item { aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid rgba(212,168,83,0.1); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .6s; filter: brightness(0.8); }
-        .gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+        .gallery-item { aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid rgba(212,168,83,0.1); background: var(--card); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); filter: brightness(0.8); }
+        .gallery-item:hover img { transform: scale(1.08); filter: brightness(1.1); }
 
         /* Content Sections */
         section { padding: 100px 5%; }
@@ -77,6 +79,7 @@
         .s-eyebrow { color: var(--gold); font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; display: block; }
         
         .btn-gold { display: inline-block; background: var(--gold); color: var(--dark); padding: 16px 40px; font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 900; text-decoration: none; transition: .3s; }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,168,83,0.3); }
 
         /* Buffet Prices */
         .buffet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -85,23 +88,28 @@
         .price-val { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); }
 
         /* Address Box */
-        .address-box { background: rgba(212,168,83,0.05); padding: 20px; border: 1px dashed var(--gold); display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
-        .copy-btn { background: var(--gold); color: var(--dark); border: none; padding: 5px 12px; font-size: 0.6rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+        .address-box { background: rgba(212,168,83,0.05); padding: 20px; border: 1px dashed var(--gold); display: flex; align-items: center; justify-content: space-between; margin-top: 20px; border-radius: 4px; }
+        .copy-btn { background: var(--gold); color: var(--dark); border: none; padding: 8px 16px; font-size: 0.65rem; font-weight: 800; cursor: pointer; text-transform: uppercase; border-radius: 2px; transition: .3s; }
+        .copy-btn:hover { background: var(--white); }
 
         /* FAQ */
         .faq-item { border-bottom: 1px solid rgba(212,168,83,0.1); }
         .faq-q { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; color: var(--muted); }
         .faq-a { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--dim); }
-        .faq-item.active .faq-a { max-height: 100px; padding-bottom: 20px; }
+        .faq-item.active .faq-a { max-height: 150px; padding-bottom: 20px; }
 
-        .float-btn { position: fixed; bottom: 30px; right: 30px; background: #c0392b; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .float-btn { position: fixed; bottom: 30px; right: 30px; background: #c0392b; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: .3s; }
+        .float-btn:hover { transform: scale(1.1); }
+
+        footer { text-align: center; padding: 40px 5%; border-top: 1px solid rgba(212,168,83,0.1); font-size: 0.75rem; color: var(--dim); }
 
         @media (max-width: 900px) {
             .buffet-grid, .gallery-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr 1fr; }
             .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--dark); flex-direction: column; justify-content: center; transition: 0.4s; }
-            .nav-links.active { right: 0; }
+            .nav-links.active { right: 0; border-left: 1px solid var(--gold); }
             .burger { display: flex; }
+            h1 { font-size: 3.5rem; }
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
@@ -149,10 +157,18 @@
         </div>
         
         <div class="gallery-grid reveal">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&q=80&w=600" alt="Sushi"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?auto=format&fit=crop&q=80&w=600" alt="Yakitori"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?auto=format&fit=crop&q=80&w=600" alt="Maki"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1562158014-978be939333c?auto=format&fit=crop&q=80&w=600" alt="Sashimi"></div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&q=80&w=600" alt="Sushi Platter">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&q=80&w=600" alt="Sashimi">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&q=80&w=600" alt="Maki Rolls">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&q=80&w=600" alt="Japanese Asian Cuisine">
+            </div>
         </div>
     </div>
 </section>
@@ -185,6 +201,10 @@
                 <div class="faq-q"><span class="t-q1">Proposez-vous la vente à emporter ?</span> <span>+</span></div>
                 <div class="faq-a"><p class="t-a1">Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).</p></div>
             </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q"><span class="t-q2">Acceptez-vous les tickets restaurant ?</span> <span>+</span></div>
+                <div class="faq-a"><p class="t-a2">Oui, nous acceptons les tickets restaurant (papier et carte), ainsi que la carte bancaire et les espèces.</p></div>
+            </div>
         </div>
     </div>
 </section>
@@ -194,20 +214,27 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
             <div>
                 <span class="s-eyebrow t-access">Accès</span>
+                <h2 class="s-title" style="font-size: 1.5rem;" class="t-findus">Où nous trouver ?</h2>
                 <div class="address-box">
-                    <span id="addr-text">33 Boulevard Gallieni, 93360 Neuilly-Plaisance</span>
+                    <span id="addr-text" style="color: var(--white);">33 Boulevard Gallieni<br>93360 Neuilly-Plaisance</span>
                     <button class="copy-btn t-copy" onclick="copyAddress()">Copier</button>
                 </div>
             </div>
             <div>
                 <span class="s-eyebrow t-hours">Horaires</span>
-                <p style="color: var(--muted); margin-top: 15px;" class="t-hours-p">
-                    Ouvert 7j/7<br>12h00 – 15h00 / 19h00 – 23h00
+                <p style="color: var(--muted); margin-top: 15px; font-size: 1.1rem; line-height: 2;" class="t-hours-p">
+                    <strong>Ouvert 7j/7</strong><br>
+                    12h00 – 15h00<br>
+                    19h00 – 23h00
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+<footer>
+    <p>HOKI SUSHI © 2026. Tous droits réservés.</p>
+</footer>
 
 <a href="tel:0951964078" class="float-btn">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg>
@@ -224,7 +251,9 @@
             't-buffet-eyebrow': 'Formulas', 't-buffet-title': 'Buffet Prices', 't-lunch': 'Lunch (Weekday)',
             't-dinner': 'Evening & Weekend', 't-adult': 'Adult', 't-child': 'Child (-1m30)',
             't-faq-title': 'FAQ', 't-q1': 'Do you offer takeout?', 't-a1': 'Yes, you can order by phone and collect with a -10% discount (excluding set menus).',
-            't-access': 'Access', 't-copy': 'Copy', 't-hours': 'Hours', 't-hours-p': 'Open 7/7<br>12:00 – 15:00 / 19:00 – 23:00',
+            't-q2': 'Do you accept restaurant vouchers?', 't-a2': 'Yes, we accept restaurant tickets and cards, as well as credit cards and cash.',
+            't-access': 'Access', 't-findus': 'Where to find us?', 't-copy': 'Copy', 't-hours': 'Hours', 
+            't-hours-p': '<strong>Open 7/7</strong><br>12:00 – 15:00<br>19:00 – 23:00',
             'open-text': 'Open now', 'closed-text': 'Currently closed'
         },
         FR: {
@@ -235,7 +264,9 @@
             't-buffet-eyebrow': 'Formules', 't-buffet-title': 'Tarifs du Buffet', 't-lunch': 'Midi (Semaine)',
             't-dinner': 'Soir & Week-end', 't-adult': 'Adulte', 't-child': 'Enfant (-1m30)',
             't-faq-title': 'Questions', 't-q1': 'Proposez-vous la vente à emporter ?', 't-a1': 'Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).',
-            't-access': 'Accès', 't-copy': 'Copier', 't-hours': 'Horaires', 't-hours-p': 'Ouvert 7j/7<br>12h00 – 15h00 / 19h00 – 23h00',
+            't-q2': 'Acceptez-vous les tickets restaurant ?', 't-a2': 'Oui, nous acceptons les tickets restaurant (papier et carte), ainsi que la carte bancaire et les espèces.',
+            't-access': 'Accès', 't-findus': 'Où nous trouver ?', 't-copy': 'Copier', 't-hours': 'Horaires', 
+            't-hours-p': '<strong>Ouvert 7j/7</strong><br>12h00 – 15h00<br>19h00 – 23h00',
             'open-text': 'Ouvert maintenant', 'closed-text': 'Fermé actuellement'
         }
     };
@@ -247,7 +278,7 @@
             const el = document.querySelector('.' + key);
             if (el) el.innerHTML = translations[currentLang][key];
         }
-        updateStatus(); // Refresh status text lang
+        updateStatus(); 
     }
 
     function updateStatus() {
@@ -261,9 +292,14 @@
 
     function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
     function toggleFaq(el) { el.classList.toggle('active'); }
+    
     function copyAddress() {
-        navigator.clipboard.writeText(document.getElementById('addr-text').innerText);
-        alert(currentLang === 'FR' ? "Adresse copiée !" : "Address copied!");
+        const textToCopy = "33 Boulevard Gallieni, 93360 Neuilly-Plaisance";
+        navigator.clipboard.writeText(textToCopy);
+        const btn = document.querySelector('.t-copy');
+        const originalText = btn.innerText;
+        btn.innerText = currentLang === 'FR' ? "Copié !" : "Copied!";
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
     }
 
     window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
