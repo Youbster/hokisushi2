@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoki Sushi – Buffet à Volonté 7j/7 · Neuilly-Plaisance</title>
-    <meta name="description" content="Hoki Sushi à Neuilly-Plaisance. Buffet japonais à volonté servi à table. Fraîcheur garantie, Sushis, Makis et Brochettes.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23111'/><text y='.9em' x='50%' text-anchor='middle' font-size='52' fill='%23d4a853'>寿</text></svg>">
 
@@ -34,6 +33,9 @@
         .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
         .nav-links a { color: var(--muted); text-decoration: none; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; transition: .3s; }
         .nav-links a:hover { color: var(--gold); }
+
+        /* Lang Toggle */
+        .lang-switch { background: none; border: 1px solid var(--dim); color: var(--gold); padding: 4px 8px; cursor: pointer; font-size: 0.6rem; font-weight: 800; border-radius: 4px; }
 
         .nav-cta { border: 1px solid var(--gold); color: var(--gold); padding: 8px 18px; font-size: .65rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: .3s; }
         .nav-cta:hover { background: var(--gold); color: var(--dark); }
@@ -65,8 +67,8 @@
         /* Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 4rem; }
         .gallery-item { aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid rgba(212,168,83,0.1); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .6s; filter: grayscale(20%) brightness(0.8); }
-        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%) brightness(1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .6s; filter: brightness(0.8); }
+        .gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
 
         /* Content Sections */
         section { padding: 100px 5%; }
@@ -75,15 +77,14 @@
         .s-eyebrow { color: var(--gold); font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; display: block; }
         
         .btn-gold { display: inline-block; background: var(--gold); color: var(--dark); padding: 16px 40px; font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 900; text-decoration: none; transition: .3s; }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,168,83,0.3); }
 
         /* Buffet Prices */
         .buffet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .price-card { background: var(--card); padding: 2.5rem; border: 1px solid rgba(212,168,83,0.1); border-top: 3px solid var(--gold); }
+        .price-card { background: var(--card); padding: 2.5rem; border-top: 3px solid var(--gold); }
         .price-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .price-val { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); }
 
-        /* Address Tool */
+        /* Address Box */
         .address-box { background: rgba(212,168,83,0.05); padding: 20px; border: 1px dashed var(--gold); display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
         .copy-btn { background: var(--gold); color: var(--dark); border: none; padding: 5px 12px; font-size: 0.6rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
 
@@ -93,10 +94,8 @@
         .faq-a { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--dim); }
         .faq-item.active .faq-a { max-height: 100px; padding-bottom: 20px; }
 
-        /* Float Call */
         .float-btn { position: fixed; bottom: 30px; right: 30px; background: #c0392b; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-        /* Mobile */
         @media (max-width: 900px) {
             .buffet-grid, .gallery-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr 1fr; }
@@ -114,11 +113,11 @@
 <nav id="navbar">
     <a href="#" class="nav-logo">HOKI<span>·</span>SUSHI</a>
     <ul class="nav-links" id="navMenu">
-        <li><a href="#about" onclick="toggleMenu()">Le Restaurant</a></li>
-        <li><a href="#buffet" onclick="toggleMenu()">Le Buffet</a></li>
-        <li><a href="#faq" onclick="toggleMenu()">Infos</a></li>
-        <li><a href="#infos" onclick="toggleMenu()">Contact</a></li>
-        <li><a href="tel:0951964078" class="nav-cta">Appeler</a></li>
+        <li><a href="#about" class="t-rest" onclick="toggleMenu()">Restaurant</a></li>
+        <li><a href="#buffet" class="t-rates" onclick="toggleMenu()">Tarifs</a></li>
+        <li><a href="#infos" class="t-contact" onclick="toggleMenu()">Contact</a></li>
+        <li><button class="lang-switch" onclick="toggleLang()">EN</button></li>
+        <li><a href="tel:0951964078" class="nav-cta t-call">Appeler</a></li>
     </ul>
     <div class="burger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -132,19 +131,19 @@
             <div class="status-dot"></div>
             <span id="status-text">...</span>
         </div>
-        <span class="s-eyebrow">Buffet à volonté servi à table</span>
+        <span class="s-eyebrow t-hero-sub">Buffet à volonté servi à table</span>
         <h1><em>HOKI</em> SUSHI</h1>
-        <p style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; color: var(--muted); margin-bottom: 2.5rem;">Fraîcheur, Tradition & Gourmandise à Neuilly-Plaisance</p>
-        <a href="#buffet" class="btn-gold">Voir la Carte</a>
+        <p style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; color: var(--muted); margin-bottom: 2.5rem;" class="t-hero-p">Fraîcheur, Tradition & Gourmandise à Neuilly-Plaisance</p>
+        <a href="#buffet" class="btn-gold t-btn-rates">Voir la Carte</a>
     </div>
 </section>
 
 <section id="about">
     <div class="inner">
         <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <span class="s-eyebrow">Notre Cuisine</span>
-            <h2 class="s-title">Sushis, Makis & Grillades</h2>
-            <p style="color: var(--muted); margin-bottom: 3rem;">
+            <span class="s-eyebrow t-about-eyebrow">Notre Cuisine</span>
+            <h2 class="s-title t-about-title">Sushis, Makis & Grillades</h2>
+            <p style="color: var(--muted); margin-bottom: 3rem;" class="t-about-p">
                 Chaque pièce est préparée avec soin pour vous offrir le meilleur de la gastronomie japonaise. Profitez de notre buffet à volonté servi à table pour une fraîcheur garantie.
             </p>
         </div>
@@ -160,18 +159,18 @@
 
 <section id="buffet" style="background: #0f0e0d;">
     <div class="inner reveal">
-        <span class="s-eyebrow">Formules</span>
-        <h2 class="s-title">Tarifs du Buffet</h2>
+        <span class="s-eyebrow t-buffet-eyebrow">Formules</span>
+        <h2 class="s-title t-buffet-title">Tarifs du Buffet</h2>
         <div class="buffet-grid">
             <div class="price-card">
-                <span class="s-eyebrow">Midi (Semaine)</span>
-                <div class="price-row"><span>Adulte</span><span class="price-val">15,90€</span></div>
-                <div class="price-row"><span>Enfant (-1m30)</span><span class="price-val">11,90€</span></div>
+                <span class="s-eyebrow t-lunch">Midi (Semaine)</span>
+                <div class="price-row"><span class="t-adult">Adulte</span><span class="price-val">15,90€</span></div>
+                <div class="price-row"><span class="t-child">Enfant (-1m30)</span><span class="price-val">11,90€</span></div>
             </div>
             <div class="price-card">
-                <span class="s-eyebrow">Soir & Week-end</span>
-                <div class="price-row"><span>Adulte</span><span class="price-val">22,90€</span></div>
-                <div class="price-row"><span>Enfant (-1m30)</span><span class="price-val">12,90€</span></div>
+                <span class="s-eyebrow t-dinner">Soir & Week-end</span>
+                <div class="price-row"><span class="t-adult">Adulte</span><span class="price-val">22,90€</span></div>
+                <div class="price-row"><span class="t-child">Enfant (-1m30)</span><span class="price-val">12,90€</span></div>
             </div>
         </div>
     </div>
@@ -179,16 +178,12 @@
 
 <section id="faq">
     <div class="inner reveal">
-        <span class="s-eyebrow">Questions</span>
-        <h2 class="s-title">Informations Pratiques</h2>
+        <span class="s-eyebrow t-faq-title">Questions</span>
+        <h2 class="s-title">FAQ</h2>
         <div class="faq-list">
             <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">Proposez-vous la vente à emporter ? <span>+</span></div>
-                <div class="faq-a"><p>Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">Le restaurant est-il climatisé ? <span>+</span></div>
-                <div class="faq-a"><p>Oui, notre salle est entièrement climatisée pour votre confort.</p></div>
+                <div class="faq-q"><span class="t-q1">Proposez-vous la vente à emporter ?</span> <span>+</span></div>
+                <div class="faq-a"><p class="t-a1">Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).</p></div>
             </div>
         </div>
     </div>
@@ -198,19 +193,16 @@
     <div class="inner reveal">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
             <div>
-                <span class="s-eyebrow">Accès</span>
-                <h2 class="s-title" style="font-size: 1.5rem;">Où nous trouver ?</h2>
+                <span class="s-eyebrow t-access">Accès</span>
                 <div class="address-box">
                     <span id="addr-text">33 Boulevard Gallieni, 93360 Neuilly-Plaisance</span>
-                    <button class="copy-btn" onclick="copyAddress()">Copier</button>
+                    <button class="copy-btn t-copy" onclick="copyAddress()">Copier</button>
                 </div>
             </div>
             <div>
-                <span class="s-eyebrow">Horaires</span>
-                <p style="color: var(--muted); margin-top: 15px;">
-                    Ouvert 7j/7<br>
-                    12h00 – 15h00<br>
-                    19h00 – 23h00
+                <span class="s-eyebrow t-hours">Horaires</span>
+                <p style="color: var(--muted); margin-top: 15px;" class="t-hours-p">
+                    Ouvert 7j/7<br>12h00 – 15h00 / 19h00 – 23h00
                 </p>
             </div>
         </div>
@@ -222,28 +214,59 @@
 </a>
 
 <script>
+    let currentLang = 'FR';
+    const translations = {
+        EN: {
+            't-rest': 'Restaurant', 't-rates': 'Rates', 't-contact': 'Contact', 't-call': 'Call Now',
+            't-hero-sub': 'Unlimited buffet served at your table', 't-hero-p': 'Freshness & Tradition in Neuilly-Plaisance',
+            't-btn-rates': 'View Prices', 't-about-eyebrow': 'Our Cuisine', 't-about-title': 'Sushi, Maki & Grill',
+            't-about-p': 'Every piece is carefully prepared to offer you the best of Japanese gastronomy. Enjoy our all-you-can-eat buffet served at your table.',
+            't-buffet-eyebrow': 'Formulas', 't-buffet-title': 'Buffet Prices', 't-lunch': 'Lunch (Weekday)',
+            't-dinner': 'Evening & Weekend', 't-adult': 'Adult', 't-child': 'Child (-1m30)',
+            't-faq-title': 'FAQ', 't-q1': 'Do you offer takeout?', 't-a1': 'Yes, you can order by phone and collect with a -10% discount (excluding set menus).',
+            't-access': 'Access', 't-copy': 'Copy', 't-hours': 'Hours', 't-hours-p': 'Open 7/7<br>12:00 – 15:00 / 19:00 – 23:00',
+            'open-text': 'Open now', 'closed-text': 'Currently closed'
+        },
+        FR: {
+            't-rest': 'Restaurant', 't-rates': 'Tarifs', 't-contact': 'Contact', 't-call': 'Appeler',
+            't-hero-sub': 'Buffet à volonté servi à table', 't-hero-p': 'Fraîcheur, Tradition & Gourmandise à Neuilly-Plaisance',
+            't-btn-rates': 'Voir la Carte', 't-about-eyebrow': 'Notre Cuisine', 't-about-title': 'Sushis, Makis & Grillades',
+            't-about-p': 'Chaque pièce est préparée avec soin pour vous offrir le meilleur de la gastronomie japonaise. Profitez de notre buffet à volonté servi à table pour une fraîcheur garantie.',
+            't-buffet-eyebrow': 'Formules', 't-buffet-title': 'Tarifs du Buffet', 't-lunch': 'Midi (Semaine)',
+            't-dinner': 'Soir & Week-end', 't-adult': 'Adulte', 't-child': 'Enfant (-1m30)',
+            't-faq-title': 'Questions', 't-q1': 'Proposez-vous la vente à emporter ?', 't-a1': 'Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).',
+            't-access': 'Accès', 't-copy': 'Copier', 't-hours': 'Horaires', 't-hours-p': 'Ouvert 7j/7<br>12h00 – 15h00 / 19h00 – 23h00',
+            'open-text': 'Ouvert maintenant', 'closed-text': 'Fermé actuellement'
+        }
+    };
+
+    function toggleLang() {
+        currentLang = currentLang === 'FR' ? 'EN' : 'FR';
+        document.querySelector('.lang-switch').innerText = currentLang === 'FR' ? 'EN' : 'FR';
+        for (let key in translations[currentLang]) {
+            const el = document.querySelector('.' + key);
+            if (el) el.innerHTML = translations[currentLang][key];
+        }
+        updateStatus(); // Refresh status text lang
+    }
+
     function updateStatus() {
         const h = new Date().getHours() + new Date().getMinutes()/60;
         const isOpen = (h >= 12 && h < 15) || (h >= 19 && h < 23);
         const b = document.getElementById('live-status');
         b.className = isOpen ? 'status-badge open-status' : 'status-badge closed-status';
-        document.getElementById('status-text').innerText = isOpen ? 'Ouvert maintenant' : 'Fermé actuellement';
+        document.getElementById('status-text').innerText = isOpen ? translations[currentLang]['open-text'] : translations[currentLang]['closed-text'];
     }
     updateStatus(); setInterval(updateStatus, 60000);
 
     function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
     function toggleFaq(el) { el.classList.toggle('active'); }
-    
     function copyAddress() {
-        const text = document.getElementById('addr-text').innerText;
-        navigator.clipboard.writeText(text);
-        alert("Adresse copiée !");
+        navigator.clipboard.writeText(document.getElementById('addr-text').innerText);
+        alert(currentLang === 'FR' ? "Adresse copiée !" : "Address copied!");
     }
 
-    window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
-
+    window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
