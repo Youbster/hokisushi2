@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoki Sushi – Buffet à Volonté 7j/7 · Neuilly-Plaisance</title>
-    <meta name="description" content="Découvrez Hoki Sushi à Neuilly-Plaisance. Buffet à volonté servi à table, produits frais, sushis, sashimis et yakitoris. Ouvert 7j/7.">
+    <meta name="description" content="Hoki Sushi à Neuilly-Plaisance. Buffet japonais à volonté servi à table. Fraîcheur garantie, Sushis, Makis et Brochettes.">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23111'/><circle cx='50' cy='50' r='46' fill='none' stroke='%23d4a853' stroke-width='2'/><text y='.9em' x='50%' text-anchor='middle' font-size='52' font-family='serif' fill='%23d4a853'>寿</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23111'/><text y='.9em' x='50%' text-anchor='middle' font-size='52' fill='%23d4a853'>寿</text></svg>">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@700;900&family=Raleway:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@300;400;700&display=swap');
 
         :root {
-            --rose: #e8b4b8;
             --gold: #d4a853;
             --dark: #0a0908;
             --card: #141210;
             --white: #faf6f0;
             --muted: rgba(250, 246, 240, 0.75); 
-            --dim: rgba(250, 246, 240, 0.5);
+            --dim: rgba(250, 246, 240, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,54 +25,56 @@
         body { font-family: 'Raleway', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; line-height: 1.6; }
 
         /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 0 5%; height: 70px; display: flex; align-items: center; justify-content: space-between; transition: all .4s; }
-        nav.scrolled { background: rgba(10, 9, 8, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 168, 83, 0.15); height: 60px; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 0 5%; height: 70px; display: flex; align-items: center; justify-content: space-between; transition: .4s; }
+        nav.scrolled { background: rgba(10, 9, 8, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(212, 168, 83, 0.2); height: 60px; }
         
         .nav-logo { font-family: 'Cormorant Garamond'; font-size: 1.4rem; font-weight: 700; color: var(--white); letter-spacing: 4px; text-decoration: none; }
         .nav-logo span { color: var(--gold); }
 
         .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--dim); text-decoration: none; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; transition: color .3s; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; transition: .3s; }
         .nav-links a:hover { color: var(--gold); }
 
-        .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 8px 18px; font-size: .65rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: all .3s; text-decoration: none; }
+        .nav-cta { border: 1px solid var(--gold); color: var(--gold); padding: 8px 18px; font-size: .65rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: .3s; }
         .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+        .burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .burger span { width: 25px; height: 2px; background: var(--gold); }
 
         /* Status Badge */
         .status-badge {
             display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
             border-radius: 50px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase;
             letter-spacing: 1.5px; margin-bottom: 1.5rem; background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .status-dot { width: 8px; height: 8px; border-radius: 50%; position: relative; }
-        .open-status { color: #4ade80; border-color: rgba(74, 222, 128, 0.3); box-shadow: 0 0 15px rgba(74, 222, 128, 0.1); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .open-status { color: #4ade80; border-color: rgba(74, 222, 128, 0.3); }
         .open-status .status-dot { background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: pulse 2s infinite; }
         .closed-status { color: #f87171; border-color: rgba(248, 113, 113, 0.3); }
         .closed-status .status-dot { background: #f87171; }
-
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
         /* Hero */
-        #hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-photo { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,9,8,0.4), rgba(10,9,8,1)), url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=2070') center/cover; opacity: 0.3; }
+        #hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,9,8,0.4), rgba(10,9,8,1)), url('https://images.unsplash.com/photo-1583623025817-d180a2221d0a?auto=format&fit=crop&q=80&w=2000') center/cover; }
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
-        h1 { font-family: 'Cormorant Garamond'; font-size: clamp(3.5rem, 10vw, 7.5rem); line-height: 0.9; margin-bottom: 0.5rem; letter-spacing: -2px; }
-        h1 em { font-style: normal; background: linear-gradient(135deg, var(--rose), var(--gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
+        h1 { font-family: 'Cormorant Garamond'; font-size: clamp(3.5rem, 10vw, 7.5rem); line-height: 0.9; margin-bottom: 1rem; }
+        h1 em { font-style: normal; color: var(--gold); }
+
         /* Gallery Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 4rem; }
-        .gallery-item { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 4px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); filter: brightness(0.8); }
-        .gallery-item:hover img { transform: scale(1.1); filter: brightness(1); }
+        .gallery-item { aspect-ratio: 1; overflow: hidden; border-radius: 4px; border: 1px solid rgba(212,168,83,0.1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: .6s; filter: grayscale(20%) brightness(0.8); }
+        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%) brightness(1); }
 
-        /* Generic Section UI */
-        section { padding: 100px 5%; position: relative; }
+        /* Content Sections */
+        section { padding: 100px 5%; }
         .inner { max-width: 1100px; margin: 0 auto; }
         .s-title { font-family: 'Cormorant Garamond'; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
         .s-eyebrow { color: var(--gold); font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; display: block; }
         
-        .btn-gold { display: inline-block; background: var(--gold); color: var(--dark); padding: 16px 40px; font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 900; text-decoration: none; transition: .3s; border: 1px solid var(--gold); }
+        .btn-gold { display: inline-block; background: var(--gold); color: var(--dark); padding: 16px 40px; font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 900; text-decoration: none; transition: .3s; }
         .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,168,83,0.3); }
 
         /* Buffet Prices */
@@ -82,11 +83,26 @@
         .price-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .price-val { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--gold); }
 
+        /* Address Tool */
+        .address-box { background: rgba(212,168,83,0.05); padding: 20px; border: 1px dashed var(--gold); display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+        .copy-btn { background: var(--gold); color: var(--dark); border: none; padding: 5px 12px; font-size: 0.6rem; font-weight: 800; cursor: pointer; text-transform: uppercase; }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid rgba(212,168,83,0.1); }
+        .faq-q { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; font-weight: 600; color: var(--muted); }
+        .faq-a { max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--dim); }
+        .faq-item.active .faq-a { max-height: 100px; padding-bottom: 20px; }
+
+        /* Float Call */
+        .float-btn { position: fixed; bottom: 30px; right: 30px; background: #c0392b; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
         /* Mobile */
         @media (max-width: 900px) {
-            .buffet-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            nav .nav-links { display: none; }
+            .buffet-grid, .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: var(--dark); flex-direction: column; justify-content: center; transition: 0.4s; }
+            .nav-links.active { right: 0; }
+            .burger { display: flex; }
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
@@ -97,45 +113,44 @@
 
 <nav id="navbar">
     <a href="#" class="nav-logo">HOKI<span>·</span>SUSHI</a>
-    <ul class="nav-links">
-        <li><a href="#about">Restaurant</a></li>
-        <li><a href="#buffet">Tarifs</a></li>
-        <li><a href="#gallery">Galerie</a></li>
-        <li><a href="#infos">Contact</a></li>
-        <li><a href="tel:0951964078" class="nav-cta">📞 09 51 96 40 78</a></li>
+    <ul class="nav-links" id="navMenu">
+        <li><a href="#about" onclick="toggleMenu()">Le Restaurant</a></li>
+        <li><a href="#buffet" onclick="toggleMenu()">Le Buffet</a></li>
+        <li><a href="#faq" onclick="toggleMenu()">Infos</a></li>
+        <li><a href="#infos" onclick="toggleMenu()">Contact</a></li>
+        <li><a href="tel:0951964078" class="nav-cta">Appeler</a></li>
     </ul>
+    <div class="burger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
 </nav>
 
 <section id="hero">
-    <div class="hero-photo"></div>
+    <div class="hero-bg"></div>
     <div class="hero-content">
         <div id="live-status" class="status-badge">
             <div class="status-dot"></div>
-            <span id="status-text">Vérification...</span>
+            <span id="status-text">...</span>
         </div>
-        
-        <span class="s-eyebrow">Neuilly-Plaisance</span>
-        <h1><em>HOKI SUSHI</em></h1>
-        <p style="font-family: 'Cormorant Garamond'; font-size: 1.5rem; color: var(--muted); margin-bottom: 2.5rem;">Buffet à Volonté servi à table · Fraîcheur & Tradition</p>
-        <div class="hero-btns">
-            <a href="#buffet" class="btn-gold">Découvrir le Buffet</a>
-        </div>
+        <span class="s-eyebrow">Buffet à volonté servi à table</span>
+        <h1><em>HOKI</em> SUSHI</h1>
+        <p style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; color: var(--muted); margin-bottom: 2.5rem;">Fraîcheur, Tradition & Gourmandise à Neuilly-Plaisance</p>
+        <a href="#buffet" class="btn-gold">Voir la Carte</a>
     </div>
 </section>
 
 <section id="about">
     <div class="inner">
         <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <span class="s-eyebrow">Bienvenue</span>
-            <h2 class="s-title">Une expérience culinaire unique</h2>
-            <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem;">
-                Situé au 33 Boulevard Gallieni, Hoki Sushi vous propose une immersion dans la gastronomie japonaise. 
-                Sushis, sashimis, yakitoris et plats chauds préparés à la minute pour une qualité optimale.
+            <span class="s-eyebrow">Notre Cuisine</span>
+            <h2 class="s-title">Sushis, Makis & Grillades</h2>
+            <p style="color: var(--muted); margin-bottom: 3rem;">
+                Chaque pièce est préparée avec soin pour vous offrir le meilleur de la gastronomie japonaise. Profitez de notre buffet à volonté servi à table pour une fraîcheur garantie.
             </p>
         </div>
-
-        <div class="gallery-grid reveal" id="gallery">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&q=80&w=600" alt="Sushi Hoki"></div>
+        
+        <div class="gallery-grid reveal">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&q=80&w=600" alt="Sushi"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?auto=format&fit=crop&q=80&w=600" alt="Yakitori"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?auto=format&fit=crop&q=80&w=600" alt="Maki"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1562158014-978be939333c?auto=format&fit=crop&q=80&w=600" alt="Sashimi"></div>
@@ -145,17 +160,16 @@
 
 <section id="buffet" style="background: #0f0e0d;">
     <div class="inner reveal">
-        <span class="s-eyebrow">À Volonté</span>
-        <h2 class="s-title">Nos Tarifs Buffet</h2>
-        
+        <span class="s-eyebrow">Formules</span>
+        <h2 class="s-title">Tarifs du Buffet</h2>
         <div class="buffet-grid">
             <div class="price-card">
-                <span class="s-eyebrow">Service Midi (Lun-Ven)</span>
+                <span class="s-eyebrow">Midi (Semaine)</span>
                 <div class="price-row"><span>Adulte</span><span class="price-val">15,90€</span></div>
                 <div class="price-row"><span>Enfant (-1m30)</span><span class="price-val">11,90€</span></div>
             </div>
             <div class="price-card">
-                <span class="s-eyebrow">Service Soir & Week-end</span>
+                <span class="s-eyebrow">Soir & Week-end</span>
                 <div class="price-row"><span>Adulte</span><span class="price-val">22,90€</span></div>
                 <div class="price-row"><span>Enfant (-1m30)</span><span class="price-val">12,90€</span></div>
             </div>
@@ -163,73 +177,76 @@
     </div>
 </section>
 
-<section id="infos">
+<section id="faq">
     <div class="inner reveal">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        <span class="s-eyebrow">Questions</span>
+        <h2 class="s-title">Informations Pratiques</h2>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">Proposez-vous la vente à emporter ? <span>+</span></div>
+                <div class="faq-a"><p>Oui, vous pouvez commander par téléphone et venir retirer votre commande avec -10% de remise (hors menus).</p></div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">Le restaurant est-il climatisé ? <span>+</span></div>
+                <div class="faq-a"><p>Oui, notre salle est entièrement climatisée pour votre confort.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="infos" style="background: #0f0e0d;">
+    <div class="inner reveal">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
             <div>
-                <span class="s-eyebrow">Localisation</span>
-                <h2 class="s-title">Nous trouver</h2>
-                <p style="color: var(--muted);">
-                    33 Boulevard Gallieni, 93360 Neuilly-Plaisance<br>
-                    🚇 RER A : Neuilly-Plaisance<br>
-                    📞 09 51 96 40 78
-                </p>
+                <span class="s-eyebrow">Accès</span>
+                <h2 class="s-title" style="font-size: 1.5rem;">Où nous trouver ?</h2>
+                <div class="address-box">
+                    <span id="addr-text">33 Boulevard Gallieni, 93360 Neuilly-Plaisance</span>
+                    <button class="copy-btn" onclick="copyAddress()">Copier</button>
+                </div>
             </div>
             <div>
                 <span class="s-eyebrow">Horaires</span>
-                <p style="color: var(--muted);">
-                    Tous les jours : 12h00 - 15h00 / 19h00 - 23h00<br>
-                    <span style="font-size: 0.8rem; color: var(--gold);">* Ouvert les jours fériés</span>
+                <p style="color: var(--muted); margin-top: 15px;">
+                    Ouvert 7j/7<br>
+                    12h00 – 15h00<br>
+                    19h00 – 23h00
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<footer style="padding: 60px 5%; border-top: 1px solid rgba(212,168,83,0.1); text-align: center; opacity: 0.6; font-size: 0.7rem;">
-    <p>© 2026 HOKI SUSHI · Neuilly-Plaisance</p>
-</footer>
+<a href="tel:0951964078" class="float-btn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg>
+</a>
 
 <script>
-    // LIVE STATUS LOGIC
-    function updateRestaurantStatus() {
-        const now = new Date();
-        const hour = now.getHours();
-        const minute = now.getMinutes();
-        const timeAsDecimal = hour + minute / 60;
+    function updateStatus() {
+        const h = new Date().getHours() + new Date().getMinutes()/60;
+        const isOpen = (h >= 12 && h < 15) || (h >= 19 && h < 23);
+        const b = document.getElementById('live-status');
+        b.className = isOpen ? 'status-badge open-status' : 'status-badge closed-status';
+        document.getElementById('status-text').innerText = isOpen ? 'Ouvert maintenant' : 'Fermé actuellement';
+    }
+    updateStatus(); setInterval(updateStatus, 60000);
 
-        const statusBadge = document.getElementById('live-status');
-        const statusText = document.getElementById('status-text');
-
-        // Logic: Open 12:00-15:00 and 19:00-23:00
-        const isLunch = timeAsDecimal >= 12 && timeAsDecimal < 15;
-        const isDinner = timeAsDecimal >= 19 && timeAsDecimal < 23;
-
-        if (isLunch || isDinner) {
-            statusBadge.className = 'status-badge open-status';
-            statusText.innerText = 'Ouvert maintenant';
-        } else {
-            statusBadge.className = 'status-badge closed-status';
-            statusText.innerText = 'Fermé actuellement';
-        }
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+    function toggleFaq(el) { el.classList.toggle('active'); }
+    
+    function copyAddress() {
+        const text = document.getElementById('addr-text').innerText;
+        navigator.clipboard.writeText(text);
+        alert("Adresse copiée !");
     }
 
-    // Run status check
-    updateRestaurantStatus();
-    setInterval(updateRestaurantStatus, 60000); // Re-check every minute
-
-    // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Reveal Animation
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
