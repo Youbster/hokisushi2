@@ -317,6 +317,8 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
   <div class="particles" id="particles"></div>
   <div class="hero-content">
     <div class="hero-badge">✦ Restaurant Japonais · Neuilly-Plaisance ✦</div>
+    <div id="heroStatus"></div>
+
     <div class="logo-ring">
       <div class="logo-roof"></div>
       <div class="logo-main">HOKI<span>·</span>SUSHI</div>
@@ -613,31 +615,25 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
 </footer>
 
 <script>
-// Open/Closed status
-function getStatus(){
+// Hero status badge
+function updateHeroStatus(){
   const now=new Date();
-  const day=now.getDay(); // 0=Sun,1=Mon...6=Sat
-  const h=now.getHours();
-  const m=now.getMinutes();
-  const mins=h*60+m;
-  const lunch=mins>=720&&mins<900; // 12:00-15:00
-  const dinner=mins>=1140&&mins<1380; // 19:00-23:00
-  const isOpen=lunch||dinner;
-  const badge=document.getElementById('statusBadge');
-  if(!badge)return;
-  let nextStr='';
-  if(!isOpen){
-    if(mins<720) nextStr='Ouvre à 12h00';
-    else if(mins<1140) nextStr='Ouvre à 19h00';
-    else nextStr='Ouvre demain à 12h00';
+  const mins=now.getHours()*60+now.getMinutes();
+  const open=(mins>=720&&mins<900)||(mins>=1140&&mins<1380);
+  let next='';
+  if(!open){
+    if(mins<720)next='Ouvre à 12h00';
+    else if(mins<1140)next='Ouvre à 19h00';
+    else next='Ouvre demain à 12h00';
   }
-  badge.innerHTML=`<div class="status-badge ${isOpen?'open':'closed'}">
-    <div class="status-dot"></div>
-    ${isOpen?'Ouvert maintenant':'Fermé · '+nextStr}
+  const el=document.getElementById('heroStatus');
+  if(el) el.innerHTML=`<div class="hero-status-badge ${open?'open':'closed'}">
+    <div class="hero-status-dot"></div>
+    <span class="hero-status-text">${open?'Ouvert maintenant':next}</span>
   </div>`;
 }
-getStatus();
-setInterval(getStatus,60000);
+updateHeroStatus();
+setInterval(updateHeroStatus,60000);
 
 // FAQ toggle
 function toggleFaq(el){
