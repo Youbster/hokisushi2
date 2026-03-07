@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoki Sushi – Restaurant Japonais Neuilly-Plaisance</title>
+<title>Hoki Sushi – Ouvert 7j/7 · Neuilly-Plaisance</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23111'/><circle cx='50' cy='50' r='46' fill='none' stroke='%23d4a853' stroke-width='2'/><text y='.9em' x='50%' text-anchor='middle' font-size='52' font-family='serif' fill='%23d4a853'>寿</text></svg>">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;600;700;900&display=swap');
 :root{--rose:#e8b4b8;--gold:#d4a853;--dark:#0a0908;--card:#141210;--white:#faf6f0;--muted:rgba(250,246,240,0.5);}
@@ -206,6 +207,26 @@ section{padding:100px 5%;position:relative;overflow:hidden;}
 .hrs{list-style:none;}
 .hrs li{display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
 .hrs li.closed .t{color:rgba(250,246,240,0.25);}
+/* OPEN/CLOSED BADGE */
+.status-badge{display:inline-flex;align-items:center;gap:.5rem;padding:6px 16px;border-radius:20px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:1.5rem;}
+.status-badge.open{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;}
+.status-badge.closed{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#f87171;}
+.status-dot{width:7px;height:7px;border-radius:50%;}
+.status-badge.open .status-dot{background:#4ade80;box-shadow:0 0 6px #4ade80;animation:pulse-dot 2s infinite;}
+.status-badge.closed .status-dot{background:#f87171;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+/* FAQ */
+#faq{background:linear-gradient(180deg,#0e0b09 0%,#0a0908 100%);}
+.faq-list{max-width:750px;display:flex;flex-direction:column;gap:.75rem;}
+.faq-item{border:1px solid rgba(212,168,83,0.12);overflow:hidden;transition:border-color .3s;}
+.faq-item.active{border-color:rgba(212,168,83,0.3);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 1.5rem;cursor:pointer;font-family:'Cormorant Garamond';font-size:1.05rem;font-weight:600;color:var(--white);transition:color .3s;gap:1rem;}
+.faq-item.active .faq-q{color:var(--gold);}
+.faq-icon{font-size:1.2rem;color:var(--gold);transition:transform .3s;flex-shrink:0;}
+.faq-item.active .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+.faq-item.active .faq-a{max-height:200px;padding:0 1.5rem 1.3rem;}
+.faq-a p{font-size:.82rem;color:rgba(250,246,240,0.5);line-height:1.9;}
 .hrs li .d{font-family:'Cormorant Garamond';font-size:.95rem;color:rgba(250,246,240,0.35);}
 .hrs li .t{font-family:'Cormorant Garamond';font-size:.95rem;color:var(--white);}
 .amen{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;}
@@ -270,7 +291,7 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
 <div class="cursor-glow" id="glow"></div>
 
 <!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/33951964078" target="_blank">
+<a class="wa-float" href="tel:0951964078">
   <div class="wa-tooltip">Nous contacter</div>
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -487,6 +508,43 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="inner">
+    <div class="reveal">
+      <p class="s-eyebrow">Questions Fréquentes</p>
+      <h2 class="s-title">On répond à tout</h2>
+      <div class="s-div"><div class="sdl"></div><div class="sdd">✦</div><div class="sdl2"></div></div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">C'est quoi le buffet à volonté ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Le buffet à volonté vous permet de déguster autant de plats que vous souhaitez. Vous commandez à table en choisissant jusqu'à 5 plats à la fois parmi notre sélection de sushis, makis, sashimis, yakitoris, plats chauds et desserts.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Faut-il réserver ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>La réservation est recommandée, surtout le week-end et le soir. Appelez-nous au 09 51 96 40 78 pour réserver votre table. Nous acceptons également les groupes.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quels moyens de paiement acceptez-vous ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Nous acceptons les cartes bancaires (CB, Visa, Mastercard), le paiement sans contact, et les tickets restaurant. Le paiement en espèces est également accepté.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Y a-t-il un menu pour les enfants ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Oui ! Les enfants de moins d'1m30 bénéficient d'un tarif spécial : 11,90€ le midi et 12,90€ le soir. Le menu enfant est servi avec un jus de fruit et un cadeau surprise. Des chaises hautes sont disponibles.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Le restaurant est-il accessible aux personnes handicapées ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Oui, Hoki Sushi est entièrement accessible aux personnes à mobilité réduite. Entrée, salle et toilettes sont adaptées PMR.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Où se garer ?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Un parking est disponible à 65m du restaurant (Parking RER Neuilly-Plaisance). Nous sommes également à 203m de la gare RER A de Neuilly-Plaisance et à deux pas du centre commercial Auchan.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="infos">
   <div class="inner">
@@ -531,9 +589,9 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
         </ul>
         <div class="info-note">
           📍 À deux pas d'Auchan et de la gare RER A de Neuilly-Plaisance.<br>
-          🍣 Buffet servi à table · max. 5 plats par commande.<br>
+
           🎁 Menu enfant avec jus et cadeau surprise.<br>
-          🎟️ Tickets restaurant acceptés · Sodexo accepté.
+          🎟️ Tickets restaurant acceptés.
         </div>
       </div>
     </div>
@@ -555,6 +613,40 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
 </footer>
 
 <script>
+// Open/Closed status
+function getStatus(){
+  const now=new Date();
+  const day=now.getDay(); // 0=Sun,1=Mon...6=Sat
+  const h=now.getHours();
+  const m=now.getMinutes();
+  const mins=h*60+m;
+  const lunch=mins>=720&&mins<900; // 12:00-15:00
+  const dinner=mins>=1140&&mins<1380; // 19:00-23:00
+  const isOpen=lunch||dinner;
+  const badge=document.getElementById('statusBadge');
+  if(!badge)return;
+  let nextStr='';
+  if(!isOpen){
+    if(mins<720) nextStr='Ouvre à 12h00';
+    else if(mins<1140) nextStr='Ouvre à 19h00';
+    else nextStr='Ouvre demain à 12h00';
+  }
+  badge.innerHTML=`<div class="status-badge ${isOpen?'open':'closed'}">
+    <div class="status-dot"></div>
+    ${isOpen?'Ouvert maintenant':'Fermé · '+nextStr}
+  </div>`;
+}
+getStatus();
+setInterval(getStatus,60000);
+
+// FAQ toggle
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isActive=item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));
+  if(!isActive)item.classList.add('active');
+}
+
 // Cursor glow
 const glow=document.getElementById('glow');
 document.addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
